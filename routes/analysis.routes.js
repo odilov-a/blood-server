@@ -6,7 +6,7 @@ const analysisRoutes = Router();
 
 analysisRoutes.get("/", analysisController.getAllAnalysis);
 analysisRoutes.get("/:analysisId", analysisController.getAnalysisById);
-analysisRoutes.post("/", analysisController.createAnalysis);
+analysisRoutes.post("/", authMiddleware, fileMiddleware, analysisController.createAnalysis);
 analysisRoutes.put("/:analysisId", authMiddleware, fileMiddleware, analysisController.updateAnalysis);
 analysisRoutes.delete("/:analysisId", authMiddleware, analysisController.deleteAnalysis);
 

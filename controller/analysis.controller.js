@@ -24,7 +24,7 @@ exports.getAnalysisById = async (req, res) => {
 
 exports.createAnalysis = async (req, res) => {
   try {
-    // req.body.file = req.files;
+    req.body.file = req.files;
     const newAnalysis = await Analysis.create({ ...req.body });
     return res.json({ data: newAnalysis });
   } catch (err) {

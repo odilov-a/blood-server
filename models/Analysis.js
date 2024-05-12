@@ -18,10 +18,6 @@ const analysisSchame = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "category",
     },
-    file: {
-      type: Array,
-      required: true,
-    },
   },
   { timestamps: true }
 );

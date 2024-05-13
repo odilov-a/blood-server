@@ -50,6 +50,7 @@ const paginate = async (model, query, ...populateFields) => {
     // Populate additional fields if provided
     populatedResults = await populateAdditionalFields(populatedResults, populateFields);
 
+    // const baseUrl = req.protocol + "://" + req.get("host") + req.baseUrl;
     const totalCount = await model.countDocuments();
     const totalPages = Math.ceil(totalCount / perPage);
 

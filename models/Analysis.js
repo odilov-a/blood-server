@@ -1,25 +1,18 @@
 const mongoose = require("mongoose");
 const analysisSchame = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
+    clientFullName: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "client",
       required: true,
     },
-    lastName: {
-      type: String,
-      required: true,
-    },
-    phoneNumber: {
-      type: Number,
-      unique: true,
-      required: true,
-    },
-    analysisType: {
+    clientCategoryType: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "category",
+      required: true,
     },
-    file: {
-      type: Array,
+    fileUrl: {
+      type: String,
       required: true,
     },
   },

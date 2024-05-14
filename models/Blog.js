@@ -15,12 +15,12 @@ const blogSchame = new mongoose.Schema(
     },
     views: {
       type: Number,
-      default: 1
+      default: 0,
     },
     status: {
       type: Boolean,
-      default: true,
-    }
+      default: false,
+    },
   },
   { timestamps: true }
 );

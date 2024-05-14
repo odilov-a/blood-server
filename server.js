@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 app.get("/video/:video", video);
 
 app.use("/uploads", express.static("uploads"));
+app.use("/files", express.static("files"));
 
 function startServerOnPort(port) {
   const listen = app.listen(port, () => console.log(`server is running ${port}`))

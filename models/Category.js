@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const categorySchame = new mongoose.Schema(
   {
-    analysisType: {
+    name: {
       type: String,
       required: true,
     },
@@ -9,5 +9,5 @@ const categorySchame = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Category = mongoose.model("category", categorySchame);
-module.exports = Category;
+const Categories = mongoose.model("category", categorySchame);
+module.exports = Categories;

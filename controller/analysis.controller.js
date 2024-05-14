@@ -1,9 +1,9 @@
 const Analysis = require("../models/Analysis.js");
-const pagination = require("../utils/pagination.js");
+const pagination = require("../utils/pagination.js")
 
 exports.getAllAnalysis = async (req, res) => {
   try {
-    const analysis = await pagination(Analysis, req.query, "analysisType");
+    const analysis = await pagination(Analysis, req.query);
     return res.json(analysis);
   } catch (err) {
     return res.status(500).json({ error: err.message });
@@ -24,8 +24,7 @@ exports.getAnalysisById = async (req, res) => {
 
 exports.createAnalysis = async (req, res) => {
   try {
-    req.body.file = req.files;
-    const newAnalysis = await Analysis.create({ ...req.body });
+    const newAnalysis = await Analysis.create({...req.body});
     return res.json({ data: newAnalysis });
   } catch (err) {
     return res.status(500).json({ error: err.message });
@@ -34,13 +33,11 @@ exports.createAnalysis = async (req, res) => {
 
 exports.updateAnalysis = async (req, res) => {
   try {
-    req.body.file = req.files;
-    const oldAnalysis = await Analysis.findById(req.params.analysisId);
-    if (!oldAnalysis) {
+    const updatedAnalysis = await Analysis.findById(req.params.analysisId);
+    if (!updatedAnalysis) {
       return res.status(404).json({ message: "Analysis not found" });
     }
-    Object.assign(oldAnalysis, req.body);
-    const updatedAnalysis = await oldAnalysis.save();
+    Object.assign(updatedAnalysis, req.body)
     return res.json({ data: updatedAnalysis });
   } catch (err) {
     return res.status(500).json({ error: err.message });

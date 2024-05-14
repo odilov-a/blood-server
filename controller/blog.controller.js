@@ -36,12 +36,12 @@ exports.createBlog = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
   try {
-    const oldBlog = await Blog.findById(req.params.blogId);
-    if (!oldBlog) {
+    const updatedBlog = await Blog.findById(req.params.blogId);
+    if (!updatedBlog) {
       return res.status(404).json({ message: "Blog not found" });
     }
     req.body.image = req.images;
-    Object.assign(oldBlog, req.body)
+    Object.assign(updatedBlog, req.body)
     return res.json({ data: updatedBlog });
   } catch (err) {
     return res.status(500).json({ error: err.message });

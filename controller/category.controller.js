@@ -38,6 +38,7 @@ exports.updateCategory = async (req, res) => {
       return res.status(404).json({ message: "Category not found" });
     }
     Object.assign(updatedCategory, req.body)
+    await updatedCategory.save();
     return res.json({ data: updatedCategory });
   } catch (err) {
     return res.status(500).json({ error: err.message });

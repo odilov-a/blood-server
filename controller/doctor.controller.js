@@ -3,8 +3,8 @@ const pagination = require("../utils/pagination.js")
 
 exports.getAllDoctor = async (req, res) => {
   try {
-    const doctor = await pagination(Doctor, req.query);
-    return res.json(devicePixelRatiooctor);
+    const doctors = await pagination(Doctor, req.query, "doctorType", "filial");
+    return res.json(doctors);
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
@@ -38,6 +38,7 @@ exports.updateDoctor = async (req, res) => {
       return res.status(404).json({ message: "Doctor not found" });
     }
     Object.assign(updatedDoctor, req.body)
+    await updatedDoctor.save();
     return res.json({ data: updatedDoctor });
   } catch (err) {
     return res.status(500).json({ error: err.message });

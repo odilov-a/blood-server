@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const blogSchame = new mongoose.Schema(
+const blogSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -25,5 +25,5 @@ const blogSchame = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Blogs = mongoose.model("blog", blogSchame);
+const Blogs = mongoose.model("Blog", blogSchema);
 module.exports = Blogs;

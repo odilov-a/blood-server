@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const doctorTypeSchame = new mongoose.Schema(
+const doctorTypeSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -9,5 +9,5 @@ const doctorTypeSchame = new mongoose.Schema(
   { timestamps: true }
 );
 
-const doctorTypes = mongoose.model("doctorType", doctorTypeSchame);
+const doctorTypes = mongoose.model("DoctorType", doctorTypeSchema);
 module.exports = doctorTypes;

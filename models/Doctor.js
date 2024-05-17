@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-const doctorSchame = new mongoose.Schema(
+const doctorSchema = new mongoose.Schema(
   {
     doctorType: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "doctorType",
+      ref: "DoctorType",
       required: true,
     },
     filial: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "filial",
+      ref: "Filial",
       required: true,
     },
     fullName: {
@@ -23,5 +23,5 @@ const doctorSchame = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Doctors = mongoose.model("doctor", doctorSchame);
+const Doctors = mongoose.model("Doctor", doctorSchema);
 module.exports = Doctors;

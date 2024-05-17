@@ -38,6 +38,7 @@ exports.updateClient = async (req, res) => {
       return res.status(404).json({ message: "Client not found" });
     }
     Object.assign(updatedClient, req.body)
+    await updatedClient.save();
     return res.json({ data: updatedClient });
   } catch (err) {
     return res.status(500).json({ error: err.message });

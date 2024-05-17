@@ -3,7 +3,7 @@ const pagination = require("../utils/pagination.js")
 
 exports.getAllAnalysis = async (req, res) => {
   try {
-    const analysis = await pagination(Analysis, req.query);
+    const analysis = await pagination(Analysis, req.query, "clientFullName", "clientCategoryType");
     return res.json(analysis);
   } catch (err) {
     return res.status(500).json({ error: err.message });
@@ -24,6 +24,11 @@ exports.getAnalysisById = async (req, res) => {
 
 exports.createAnalysis = async (req, res) => {
   try {
+    if (req.files && req.files.length > 0) {
+      req.body.fileUrl = req.files[0].path;  // Assuming you want to store the path of the first file
+    } else {
+      req.body.fileUrl = null;  // Handle cases where no file is uploaded
+    }
     const newAnalysis = await Analysis.create({...req.body});
     return res.json({ data: newAnalysis });
   } catch (err) {
@@ -33,11 +38,17 @@ exports.createAnalysis = async (req, res) => {
 
 exports.updateAnalysis = async (req, res) => {
   try {
+    if (req.files && req.files.length > 0) {
+      req.body.fileUrl = req.files[0].path;  // Assuming you want to store the path of the first file
+    } else {
+      req.body.fileUrl = null;  // Handle cases where no file is uploaded
+    }
     const updatedAnalysis = await Analysis.findById(req.params.analysisId);
     if (!updatedAnalysis) {
       return res.status(404).json({ message: "Analysis not found" });
     }
-    Object.assign(updatedAnalysis, req.body)
+    Object.assign(updatedAnalysis, req.body);
+    await updatedAnalysis.save();
     return res.json({ data: updatedAnalysis });
   } catch (err) {
     return res.status(500).json({ error: err.message });

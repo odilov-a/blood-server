@@ -38,6 +38,7 @@ exports.updateDoctorType = async (req, res) => {
       return res.status(404).json({ message: "DoctorType not found" });
     }
     Object.assign(updatedDoctorType, req.body)
+    await updatedDoctorType.save();
     return res.json({ data: updatedDoctorType });
   } catch (err) {
     return res.status(500).json({ error: err.message });

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const operatorSchame = new mongoose.Schema(
+const operatorSchema = new mongoose.Schema(
   {
     filial: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "filial",
+      ref: "Filial",
       required: true,
     },
     username: {
@@ -23,5 +23,5 @@ const operatorSchame = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Operators = mongoose.model("operator", operatorSchame);
+const Operators = mongoose.model("Operator", operatorSchema);
 module.exports = Operators;

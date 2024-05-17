@@ -3,7 +3,7 @@ const pagination = require("../utils/pagination.js")
 
 exports.getAllOperator = async (req, res) => {
   try {
-    const operator = await pagination(Operator, req.query);
+    const operator = await pagination(Operator, req.query, "filial");
     return res.json(operator);
   } catch (err) {
     return res.status(500).json({ error: err.message });
@@ -38,6 +38,7 @@ exports.updateOperator = async (req, res) => {
       return res.status(404).json({ message: "Operator not found" });
     }
     Object.assign(updatedOperator, req.body)
+    await updatedOperator.save();
     return res.json({ data: updatedOperator });
   } catch (err) {
     return res.status(500).json({ error: err.message });

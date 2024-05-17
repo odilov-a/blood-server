@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-const analysisSchame = new mongoose.Schema(
+const analysisSchema = new mongoose.Schema(
   {
     clientFullName: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "client",
+      ref: "Client",
       required: true,
     },
     clientCategoryType: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "category",
+      ref: "Category",
       required: true,
     },
     fileUrl: {
@@ -19,5 +19,5 @@ const analysisSchame = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Analysis = mongoose.model("analysis", analysisSchame);
+const Analysis = mongoose.model("Analysis", analysisSchema);
 module.exports = Analysis;

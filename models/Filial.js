@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const filialSchame = new mongoose.Schema(
+const filialSchema = new mongoose.Schema(
   {
     location: {
       type: String,
@@ -21,5 +21,5 @@ const filialSchame = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Filials = mongoose.model("filial", filialSchame);
+const Filials = mongoose.model("Filial", filialSchema);
 module.exports = Filials;

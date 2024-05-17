@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
-const clientSchame = new mongoose.Schema(
+const clientSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
       required: true,
     },
     phoneNumber: {
-      type: Number,
+      type: String,
       required: true,
+      unique: true, 
     },
   },
   { timestamps: true }
 );
 
-const Clients = mongoose.model("client", clientSchame);
+const Clients = mongoose.model("Client", clientSchema);
 module.exports = Clients;

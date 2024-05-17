@@ -38,6 +38,7 @@ exports.updateFilial = async (req, res) => {
       return res.status(404).json({ message: "Filial not found" });
     }
     Object.assign(updatedFilial, req.body)
+    await updatedFilial.save();
     return res.json({ data: updatedFilial });
   } catch (err) {
     return res.status(500).json({ error: err.message });

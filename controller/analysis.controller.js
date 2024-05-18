@@ -25,9 +25,8 @@ exports.getAnalysisById = async (req, res) => {
 exports.createAnalysis = async (req, res) => {
   try {
     if (req.files && req.files.length > 0) {
-      req.body.fileUrl = req.files[0].path;  // Assuming you want to store the path of the first file
-    } else {
-      req.body.fileUrl = null;  // Handle cases where no file is uploaded
+      const relativeFilePath =  req.files[0].filename;
+      req.body.fileUrl = process.env.URL_FILES + relativeFilePath; 
     }
     const newAnalysis = await Analysis.create({...req.body});
     return res.json({ data: newAnalysis });
@@ -39,9 +38,8 @@ exports.createAnalysis = async (req, res) => {
 exports.updateAnalysis = async (req, res) => {
   try {
     if (req.files && req.files.length > 0) {
-      req.body.fileUrl = req.files[0].path;  // Assuming you want to store the path of the first file
-    } else {
-      req.body.fileUrl = null;  // Handle cases where no file is uploaded
+      const relativeFilePath =  req.files[0].filename;
+      req.body.fileUrl = process.env.URL_FILES + relativeFilePath; 
     }
     const updatedAnalysis = await Analysis.findById(req.params.analysisId);
     if (!updatedAnalysis) {

@@ -17,10 +17,6 @@ const blogSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    status: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );

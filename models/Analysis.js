@@ -13,7 +13,7 @@ const analysisSchema = new mongoose.Schema(
     },
     fileUrl: {
       type: String,
-      required: true,
+      // required: true,
     },
   },
   { timestamps: true }

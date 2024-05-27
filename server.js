@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 require("./backup.js");
 require("./connection.js");
-require("./bot.js");
+// require("./bot.js");
 const express = require("express");
 const cors = require("cors");
 const routes = require("./routes/router.js");

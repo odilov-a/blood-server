@@ -30,7 +30,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node ./dist/bundle.js",
+    "start": "node server.js",
     "build": "webpack --config webpack.config.js --mode production",
     "prod": "node ./dist/bundle.js"
   },
